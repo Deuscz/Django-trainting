@@ -1,0 +1,21 @@
+.pag{
+    margin-left: auto;
+    margin-right: auto;
+}
+#cards{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.card{
+    margin: 10%;
+}
+.card-title{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title_create_div{
+    padding-top: 10%;
+    padding-left: 30%;
+}

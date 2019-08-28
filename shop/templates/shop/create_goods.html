@@ -1,0 +1,15 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    SHOP
+{% endblock %}
+
+<div>
+    {% block content %}
+        <form id="title_create_div" method="POST">
+            {% csrf_token %}
+            <div>{{ form.as_p }}</div>
+            <input type="submit" value="Save">
+        </form>
+    {% endblock %}
+</div>

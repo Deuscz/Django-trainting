@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+SHOP
+{% endblock %}
+{% block content %}
+<div id='cards'>
+	{% for good in goods %}
+			<div class="card mb-3" style="max-width: 100%;">
+				<div class="row no-gutters">
+				  <div class="col-md-4">
+					<img src="{{baseURL}}/{{good.image}}" class="card-img" alt="...">
+				  </div>
+				  <div class="col-md-8">
+					<div class="card-body">
+					  <h5 class="card-title">{{ good.title }}</h5>
+					  <p class="card-text">{{ good.description }}</p>
+					  <a href="{{ good.get_absolute_url }}" class="btn btn-primary">{{ good.price }}</a>
+					  <p class="card-text"><small class="text-muted">{{ good.date_pub }}</small></p>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		
+	{% endfor %}
+</div>
+<div class='pag' style="padding-left: 40%; padding-top: 5%;">
+	<ul class="pagination">
+		{% if goods.has_previous %}
+		<li class="page-item ">
+			<a class="page-link" href="?page=1" tabindex="-1" >First</a>
+		</li>
+		<li class="page-item ">
+			<a class="page-link" href="?page={{ goods.previous_page_number }}" tabindex="-1">Previous</a>
+		</li>
+		{% endif %}
+
+		<li class="page-item active" aria-current="page">
+			<a class="page-link" href="#">{{ goods.number }}<span class="sr-only">{{ goods.number }} of {{ goods.paginator.num_pages }}</span></a>
+		</li>
+
+		{% if goods.has_next %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ goods.next_page_number }}">Next</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="?page={{ goods.paginator.num_pages }}">Last</a>
+		</li>
+		{% endif %}
+	</ul>
+</div>
+{% endblock %}
